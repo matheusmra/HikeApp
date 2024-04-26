@@ -10,6 +10,7 @@ import SwiftUI
 struct CustomCircleView: View {
     @State private var isAnimateGradient: Bool = false
     var body: some View {
+        ZStack {
          Circle()
             .fill(
         LinearGradient(
@@ -27,10 +28,12 @@ struct CustomCircleView: View {
                 isAnimateGradient.toggle()
             }
         }
-        .frame(width: 256, height: 256)
-    }
+            
+        MotionAnimationView()
+    } //: FIM ZSTACK
+    .frame(width: 256, height: 256)
+  }
 }
-
 #Preview {
     CustomCircleView()
 }

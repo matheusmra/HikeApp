@@ -10,16 +10,16 @@ import SwiftUI
 struct CardView: View {
     // MARK: - PROPRIEDAS
     
-    @State private var imageNumber: Int = 1
-    @State private var randomNumber: Int = 1
+    @State private var nImagem: Int = 1
+    @State private var nAleatorio: Int = 1
     
     // MARK: - FUNCÕES
     
     func randomImage() {
         repeat {
-            randomNumber = Int.random(in: 1...5)
-        } while randomNumber == imageNumber
-        imageNumber = randomNumber
+            nAleatorio = Int.random(in: 1...5)
+        } while nAleatorio == nImagem
+        nImagem = nAleatorio
     }
     
     
@@ -66,10 +66,10 @@ struct CardView: View {
                 ZStack {
                     CustomCircleView()
                     
-                    Image("image-\(imageNumber)")
+                    Image("image-\(nImagem)")
                     .resizable()
                     .scaledToFit()
-                    .animation(.default, value: imageNumber)
+                    .animation(.default, value: nImagem)
                 }
                 
                 // MARK: - FOOTER
@@ -79,7 +79,7 @@ struct CardView: View {
                 print("Botão apertado")
                 randomImage()
                 } label: {
-                    Text("Acessar")
+                    Text("EXPLORAR")
                         .font(.title2)
                         .fontWeight(.heavy)
                         .foregroundStyle(
