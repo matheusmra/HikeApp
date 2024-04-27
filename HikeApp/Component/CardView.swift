@@ -12,6 +12,7 @@ struct CardView: View {
     
     @State private var nImagem: Int = 1
     @State private var nAleatorio: Int = 1
+    @State private var config: Bool = false
     
     // MARK: - FUNCÕES
     
@@ -50,8 +51,14 @@ struct CardView: View {
                         Button {
                           // AÇÃO: Mostra um alerta
                           print("O botão foi apertado.")
+                            config.toggle()
                         } label: {
                             CustomButtonView()
+                        }
+                        .sheet(isPresented: $config) {
+                            SettingsView()
+                                .presentationDragIndicator(.visible)
+                                .presentationDetents([.medium, .large])
                         }
                     }
                     
