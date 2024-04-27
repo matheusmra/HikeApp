@@ -58,6 +58,27 @@ struct SettingsView: View {
             // MARK: - SEÇÃO: Ícones
             
             // MARK: - SECÃO: SOBRE
+            
+            Section(
+                header: Text("Sobre o APP"),
+                footer: HStack {
+                 Spacer()
+                    Text("Copyright © Todos os direitos reservados.")
+                    Spacer()
+                    
+                }
+                    .padding(.vertical, 8)
+            ) {
+                // 1. Linha
+                CustomListRowView(rowLabel: "Compatibilidade", rowIcon: "info.circle", rowContent: "iOS", rowTintColor: .blue)
+                
+                CustomListRowView(rowLabel: "Versão", rowIcon: "gear", rowContent: "0.1", rowTintColor: .purple)
+                
+                CustomListRowView(rowLabel: "Linguagem", rowIcon: "swift", rowContent: "Swift", rowTintColor: .orange)
+                
+                CustomListRowView(rowLabel: "Desenvolvedor", rowIcon: "ellipsis.curlybraces", rowContent: "Matheus", rowTintColor: .mint)
+                
+            } //: SEÇÃO
         } //: FIM DA LISTA
     }
 }
