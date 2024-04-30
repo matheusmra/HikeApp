@@ -8,6 +8,17 @@
 import SwiftUI
 
 struct SettingsView: View {
+    // MARK: - PROPRIEDADES
+    
+    private let trocarIcone: [String] = [
+        "AppIcon-Lupa",
+        "AppIcon-Mapa",
+        "AppIcon-Cogu",
+        "AppIcon-Camera",
+        "AppIcon-Mochila",
+        "AppIcon-Fogueira"
+    ]
+    
     var body: some View {
         List {
           // MARK: - SEÇÃO: TOPO
@@ -56,6 +67,43 @@ struct SettingsView: View {
             } //: TOPO
             .listRowSeparator(.hidden)
             // MARK: - SEÇÃO: Ícones
+            
+            Section(header: Text("Ícones alternativos")) {
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: 12) {
+                        ForEach(trocarIcone.indices, id: \.self) { item in
+                            Button {
+                                print("O Icone \(trocarIcone[item]) foi tocado")
+                                
+                                UIApplication.shared.setAlternateIconName(trocarIcone[item]) {
+                                    error in
+                                    if error != nil {
+                                        print("Erro ao trocar ícone do app: \(String(describing: error?.localizedDescription))")
+                                    } else {
+                                        print("Ícone trocado com sucesso!")
+                                    }
+                                }
+                                
+                            } label: {
+                                Image("\(trocarIcone[item])-Preview")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 80, height: 80)
+                                    .cornerRadius(16)
+                            }
+                        .buttonStyle(.borderless)
+                        }
+                    }
+                }
+                .padding(.top, 12)
+                Text("Selecione o seu ícone favorito.")
+                    .frame(minWidth: 0, maxWidth: .infinity)
+                    .multilineTextAlignment(.center)
+                    .foregroundColor(.secondary)
+                    .font(.footnote)
+                    .padding(.bottom, 12)
+            }
+            .listRowSeparator(.hidden)
             
             // MARK: - SECÃO: SOBRE
             
